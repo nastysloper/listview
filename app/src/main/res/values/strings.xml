@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyListApplication</string>
+    <string-array name="words">
+        <item>Rich</item>
+        <item>Bryan</item>
+        <item>Maya</item>
+        <item>Catherine</item>
+    </string-array>
+</resources>
