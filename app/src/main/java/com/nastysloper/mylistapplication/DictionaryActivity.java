@@ -34,19 +34,22 @@ public class DictionaryActivity extends AppCompatActivity {
 
         // you can also use a lambda here, but my version of Android Studio is running Java 7!
         // Gotta fix that...
-        // listView.setOnItemClickListener((adapterView, view, position, id) -> {
-        //     String word = (String) adapterView.getItemAtPosition(position);
-        // });
+         listView.setOnItemClickListener((adapterView, view, position, id) -> {
+                     String word = (String) adapterView.getItemAtPosition(position);
+                     String def = dictionary.get(word);
+                     Toast toast = Toast.makeText(DictionaryActivity.this, def, Toast.LENGTH_SHORT);
+                     toast.show();
+         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                String word = (String) adapterView.getItemAtPosition(position);
-                String def = dictionary.get(word);
-                Toast toast = Toast.makeText(DictionaryActivity.this, def, Toast.LENGTH_SHORT);
-
-                toast.show();
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                String word = (String) adapterView.getItemAtPosition(position);
+//                String def = dictionary.get(word);
+//                Toast toast = Toast.makeText(DictionaryActivity.this, def, Toast.LENGTH_SHORT);
+//
+//                toast.show();
+//            }
+//        });
     }
 }
