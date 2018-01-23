@@ -1,0 +1,5 @@
+chien dog
+cochon pig
+bonjour hello
+salut hi
+chat cat
