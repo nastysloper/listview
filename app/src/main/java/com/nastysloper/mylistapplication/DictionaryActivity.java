@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.common.collect.ImmutableMap;
@@ -32,8 +33,6 @@ public class DictionaryActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, new ArrayList<String>(dictionary.keySet()));
         listView.setAdapter(adapter);
 
-        // you can also use a lambda here, but my version of Android Studio is running Java 7!
-        // Gotta fix that...
          listView.setOnItemClickListener((adapterView, view, position, id) -> {
                      String word = (String) adapterView.getItemAtPosition(position);
                      String def = dictionary.get(word);
@@ -41,15 +40,9 @@ public class DictionaryActivity extends AppCompatActivity {
                      toast.show();
          });
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-//                String word = (String) adapterView.getItemAtPosition(position);
-//                String def = dictionary.get(word);
-//                Toast toast = Toast.makeText(DictionaryActivity.this, def, Toast.LENGTH_SHORT);
-//
-//                toast.show();
-//            }
-//        });
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_list);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, new ArrayList<String>(dictionary.keySet()));
+        spinner.setAdapter(adapter1);
     }
 }
