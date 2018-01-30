@@ -44,5 +44,20 @@ public class DictionaryActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, new ArrayList<String>(dictionary.keySet()));
         spinner.setAdapter(adapter1);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String word = (String) adapterView.getItemAtPosition(i);
+                String def = dictionary.get(word);
+                Toast toast = Toast.makeText(DictionaryActivity.this, def, Toast.LENGTH_SHORT);
+                toast.show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // do nothing
+            }
+        });
     }
 }
