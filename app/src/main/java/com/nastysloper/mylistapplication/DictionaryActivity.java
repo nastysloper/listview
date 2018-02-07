@@ -7,10 +7,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.common.collect.ImmutableMap;
 
+import org.w3c.dom.Text;
+
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,5 +87,28 @@ public class DictionaryActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(DictionaryActivity.this, def1, Toast.LENGTH_SHORT);
             toast.show();
         }));
+
+        try {
+            PrintStream output = new PrintStream(
+                    openFileOutput("out.txt", MODE_PRIVATE));
+                    output.println("this is a short file");
+                    output.println("that you will love reading!");
+        } catch (FileNotFoundException e) {
+            // log exception
+        }
+        try {
+            Scanner scan2 = new Scanner(
+                    openFileInput("out.txt"));
+            StringBuilder allText = new StringBuilder();
+            while (scan2.hasNextLine()) {
+                allText.append(scan2.nextLine());
+            }
+            TextView readTextView = (TextView) findViewById(R.id.readTextView);
+            readTextView.setText(allText);
+            scan2.close();
+
+        } catch (FileNotFoundException e) {
+            // log exception
+        }
     }
 }
